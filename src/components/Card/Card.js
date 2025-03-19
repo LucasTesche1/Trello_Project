@@ -6,7 +6,9 @@ const Card = (props) => {
   return (
     <>
       <li className="card-item">
-        {card.image && <img className="card-cover" src={card.image}></img>}
+        {card.image && (
+          <img className="card-cover" src={card.image} alt=""></img>
+        )}
         {card.title}
       </li>
     </>

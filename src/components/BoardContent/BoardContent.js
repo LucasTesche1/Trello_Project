@@ -2,7 +2,7 @@ import "./BoardContent.scss";
 import Column from "../Columns/Column";
 import { initData } from "../../actions/initData";
 import { useState, useEffect } from "react";
-import _, { map } from "lodash";
+import _ from "lodash";
 import { mapOrder } from "../../utilities/sorts";
 
 const BoardContent = () => {
