@@ -14,13 +14,11 @@ const BoardContent = () => {
     const boardInitData = initData.board.find((item) => item.id === "board-1");
     if (boardInitData) {
       setBoard(boardInitData);
-
-      //sort columns
       setColumns(
         mapOrder(boardInitData.columns, boardInitData.columnOrder, "id")
       );
     }
-  }, []);
+  }, [initData]);
 
   const onColumnDrop = (dropResult) => {
     console.log(">>> inside onColumnDrop", dropResult);
@@ -55,8 +53,7 @@ const BoardContent = () => {
             className: "cards-drop-preview",
           }}
         >
-          {columns &&
-            columns.length > 0 &&
+          {columns.length > 0 &&
             columns.map((column, index) => (
               <Draggable key={column.id}>
                 <Column column={column} />

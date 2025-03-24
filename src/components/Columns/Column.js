@@ -20,15 +20,6 @@ const Column = (props) => {
         {/* Evita erro caso title seja undefined */}
         <div className="card-list">
           <Container
-            // onDragStart={(e) => console.log("drag started", e)}
-            // onDragEnd={(e) => console.log("drag end", e)}
-            // onDragEnter={() => {
-            //   console.log("drag enter:", column.id);
-            // }}
-            // onDragLeave={() => {
-            //   console.log("drag leave:", column.id);
-            // }}
-            // onDropReady={(p) => console.log("Drop ready: ", p)}
             groupName="col"
             onDrop={onCardDrop}
             getChildPayload={(index) => cards[index]}
@@ -40,17 +31,15 @@ const Column = (props) => {
               className: "drop-preview",
             }}
             dropPlaceholderAnimationDuration={200}
-          />
-
-          {cards &&
-            cards.lenght > 0 &&
-            cards.map((card, index) => (
-              <Draggable key={card.id}>
-                <Card card={card} />
-              </Draggable>
-            ))}
-
-          <Container />
+          >
+            {cards &&
+              cards.length > 0 &&
+              cards.map((card, index) => (
+                <Draggable key={card.id}>
+                  <Card card={card} />
+                </Draggable>
+              ))}
+          </Container>
         </div>
         <footer>Add another card</footer>
       </div>
