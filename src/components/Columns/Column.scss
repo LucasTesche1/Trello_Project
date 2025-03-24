@@ -57,6 +57,7 @@
     .card-ghost {
       transition: transform 0.18s ease;
       transform: rotateZ(5deg);
+      font-weight: bold;
     }
 
     .card-ghost-drop {

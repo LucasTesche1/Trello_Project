@@ -2,14 +2,11 @@ import "./Column.scss";
 import Card from "../Card/Card";
 import { mapOrder } from "../../utilities/sorts";
 import { Container, Draggable } from "react-smooth-dnd";
+import { drop } from "lodash";
 
 const Column = (props) => {
-  const { column = {} } = props;
+  const { column, onCardDrop } = props;
   const cards = mapOrder(column.cards || [], column.cardOrder || [], "id");
-
-  const onCardDrop = (dropResult) => {
-    console.log(">>> inside onCardDrop: ", dropResult);
-  };
 
   return (
     <>
@@ -18,7 +15,7 @@ const Column = (props) => {
         <div className="card-list">
           <Container
             groupName="col"
-            onDrop={onCardDrop}
+            onDrop={(dropResult) => onCardDrop(dropResult, column.id)}
             getChildPayload={(index) => cards[index]}
             dragClass="card-ghost"
             dropClass="card-ghost-drop"
