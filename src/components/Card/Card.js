@@ -5,12 +5,12 @@ const Card = (props) => {
 
   return (
     <>
-      <li className="card-item">
+      <div className="card-item">
         {card.image && (
           <img className="card-cover" src={card.image} alt=""></img>
         )}
         {card.title}
-      </li>
+      </div>
     </>
   );
 };
