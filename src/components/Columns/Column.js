@@ -14,10 +14,7 @@ const Column = (props) => {
   return (
     <>
       <div className="column">
-        <header className="column-drag-handle">
-          {column.title || "Untitled Column"}
-        </header>{" "}
-        {/* Evita erro caso title seja undefined */}
+        <header className="column-drag-handle">{column.title}</header>
         <div className="card-list">
           <Container
             groupName="col"
@@ -28,17 +25,19 @@ const Column = (props) => {
             dropPlaceholder={{
               animationDuration: 150,
               showOnTop: true,
-              className: "drop-preview",
+              className: "card-drop-preview",
             }}
             dropPlaceholderAnimationDuration={200}
           >
             {cards &&
               cards.length > 0 &&
-              cards.map((card, index) => (
-                <Draggable key={card.id}>
-                  <Card card={card} />
-                </Draggable>
-              ))}
+              cards.map((card, index) => {
+                return (
+                  <Draggable key={card.id}>
+                    <Card card={card} />
+                  </Draggable>
+                );
+              })}
           </Container>
         </div>
         <footer>Add another card</footer>

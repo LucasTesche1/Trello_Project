@@ -50,15 +50,18 @@ const BoardContent = () => {
           dropPlaceholder={{
             animationDuration: 150,
             showOnTop: true,
-            className: "cards-drop-preview",
+            className: "column-drop-preview",
           }}
         >
-          {columns.length > 0 &&
-            columns.map((column, index) => (
-              <Draggable key={column.id}>
-                <Column column={column} />
-              </Draggable>
-            ))}
+          {columns &&
+            columns.length > 0 &&
+            columns.map((column, index) => {
+              return (
+                <Draggable key={column.id}>
+                  <Column column={column} />
+                </Draggable>
+              );
+            })}
         </Container>
       </div>
     </>
