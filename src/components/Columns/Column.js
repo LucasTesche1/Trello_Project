@@ -2,7 +2,6 @@ import "./Column.scss";
 import Card from "../Card/Card";
 import { mapOrder } from "../../utilities/sorts";
 import { Container, Draggable } from "react-smooth-dnd";
-import { drop } from "lodash";
 
 const Column = (props) => {
   const { column, onCardDrop } = props;
@@ -37,7 +36,11 @@ const Column = (props) => {
               })}
           </Container>
         </div>
-        <footer>Add another card</footer>
+        <footer>
+          <div className="footer-action">
+            <i className="fa fa-plus icon"> </i>Add another card
+          </div>
+        </footer>
       </div>
     </>
   );
