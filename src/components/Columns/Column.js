@@ -2,6 +2,7 @@ import "./Column.scss";
 import Card from "../Card/Card";
 import { mapOrder } from "../../utilities/sorts";
 import { Container, Draggable } from "react-smooth-dnd";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const Column = (props) => {
   const { column, onCardDrop } = props;
@@ -10,7 +11,24 @@ const Column = (props) => {
   return (
     <>
       <div className="column">
-        <header className="column-drag-handle">{column.title}</header>
+        <header className="column-drag-handle">
+          <div className="column-title">{column.title}</div>
+          <div className="column-dropdown">
+            <Dropdown>
+              <Dropdown.Toggle
+                variant=""
+                id="dropdown-basic"
+                size="sm"
+              ></Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item href="#">Add card</Dropdown.Item>
+                <Dropdown.Item href="#">Delete column</Dropdown.Item>
+                <Dropdown.Item href="#">Something else</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+        </header>
         <div className="card-list">
           <Container
             groupName="col"

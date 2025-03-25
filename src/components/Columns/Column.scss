@@ -23,6 +23,27 @@
     cursor: pointer;
   }
 
+  .column-drag-handle {
+    display: flex;
+
+    .column-title {
+      width: 90%;
+    }
+
+    .column-dropdown {
+      width: 10%;
+
+      .dropdown-toggle {
+        &::after {
+          content: "...";
+          border: none !important;
+          outline: none !important;
+          box-shadow: none !important;
+        }
+      }
+    }
+  }
+
   footer {
     padding-left: 10px;
     height: $column-footer-height;
