@@ -77,7 +77,7 @@ const Column = (props) => {
       <ConfirmModal
         show={isShowModalDelete}
         title={"Remove a column"}
-        content={`Are you sure to remove this column: ${column.title}`}
+        content={`Are you sure to remove this column: <b>${column.title}</b>`}
         onAction={onModalAction}
       />
     </>
