@@ -15,7 +15,7 @@
   header {
     padding-left: 15px;
     height: $column-header-height;
-    line-height: $column-header-height;
+    // line-height: $column-header-height;
     font-size: 16px;
     font-weight: bold;
     border-top-left-radius: $column-border-radius;
@@ -26,6 +26,8 @@
   .column-drag-handle {
     display: flex;
     padding-right: 3px;
+    padding-top: 5px;
+    padding-left: 10px;
 
     .column-title {
       width: 90%;
@@ -35,7 +37,7 @@
       width: 10%;
 
       .dropdown-toggle {
-        padding: 0 7px;
+        padding: 2px 7px;
 
         &::after {
           content: "...";

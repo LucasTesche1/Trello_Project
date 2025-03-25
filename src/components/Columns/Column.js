@@ -4,27 +4,58 @@ import { mapOrder } from "../../utilities/sorts";
 import { Container, Draggable } from "react-smooth-dnd";
 import Dropdown from "react-bootstrap/Dropdown";
 import ConfirmModal from "../Common/ConfirmModal";
-import { useState } from "react";
+import Form from "react-bootstrap/Form";
+import { useEffect, useState } from "react";
+import {
+  MODAL_ACTION_CLOSE,
+  MODAL_ACTION_CONFIRM,
+} from "../../utilities/constant";
 
 const Column = (props) => {
   const { column, onCardDrop } = props;
   const cards = mapOrder(column.cards || [], column.cardOrder || [], "id");
-
   const [isShowModalDelete, setIsShowModalDelete] = useState(false);
+  const [titleColumn, setTitleColumn] = useState("");
+
+  useEffect(() => {
+    if (column && column.title) {
+      setTitleColumn(column.title);
+    }
+  }, [column]);
 
   const toggleModal = () => {
     setIsShowModalDelete(!isShowModalDelete);
   };
 
   const onModalAction = (type) => {
-    console.log(type);
+    if (type === MODAL_ACTION_CLOSE) {
+      //do nothing
+    }
+    if (type === MODAL_ACTION_CONFIRM) {
+      //remove a column
+    }
     toggleModal();
   };
+
+  const selectAllText = (event) => {
+    event.target.focus();
+    event.target.select();
+  };
+
   return (
     <>
       <div className="column">
         <header className="column-drag-handle">
-          <div className="column-title">{column.title}</div>
+          <div className="column-title">
+            <Form.Control
+              size={"sm"}
+              type="text"
+              value={titleColumn}
+              className="customize-input-column"
+              onClick={selectAllText}
+              onChange={(event) => setTitleColumn(event.target.value)}
+            />
+          </div>
           <div className="column-dropdown">
             <Dropdown>
               <Dropdown.Toggle
