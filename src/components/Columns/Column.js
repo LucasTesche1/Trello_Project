@@ -10,6 +10,7 @@ import {
   MODAL_ACTION_CLOSE,
   MODAL_ACTION_CONFIRM,
 } from "../../utilities/constant";
+import { v4 as uuidv4 } from "uuid";
 
 const Column = (props) => {
   const { column, onCardDrop, onUpdateColumn } = props;
@@ -24,6 +25,12 @@ const Column = (props) => {
   const [isShowAddNewCard, setIsShowAddNewCard] = useState(false);
   const [valueTextArea, setValueTextArea] = useState("");
   const textAreaRef = useRef(null);
+
+  useEffect(() => {
+    if (isShowAddNewCard === true && textAreaRef && textAreaRef.current) {
+      textAreaRef.current.focus();
+    }
+  }, [isShowAddNewCard]);
 
   useEffect(() => {
     if (column && column.title) {
@@ -73,6 +80,31 @@ const Column = (props) => {
       _destroy: false,
     };
     onUpdateColumn(newColumn);
+  };
+
+  const handleAddNewCard = () => {
+    //validate
+
+    if (!valueTextArea) {
+      textAreaRef.current.focus();
+      return;
+    }
+
+    const newCard = {
+      id: uuidv4(),
+      boardId: column.boardId,
+      columnId: column.id,
+      title: valueTextArea,
+      image: null,
+    };
+
+    let newColumn = { ...column };
+    newColumn.cards = [...newColumn.cards, newCard];
+    newColumn.cardOrder = newColumn.cards.map((card) => card.id);
+
+    onUpdateColumn(newColumn);
+    setValueTextArea("");
+    setIsShowAddNewCard(false);
   };
 
   return (
@@ -148,16 +180,28 @@ const Column = (props) => {
               ></textarea>
 
               <div className="group-btn">
-                <button className="btn btn-primary">Add card</button>
-                <i className="fa fa-times icon"></i>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => handleAddNewCard()}
+                >
+                  Add card
+                </button>
+                <i
+                  className="fa fa-times icon"
+                  onClick={() => setIsShowAddNewCard(false)}
+                ></i>
               </div>
             </div>
           )}
         </div>
         {isShowAddNewCard === false && (
           <footer>
-            <div className="footer-action">
-              <i className="fa fa-plus icon"> </i> Add another card
+            <div
+              className="footer-action"
+              onClick={() => setIsShowAddNewCard(true)}
+            >
+              <i className="fa fa-plus icon"></i>
+              Add another card
             </div>
           </footer>
         )}
