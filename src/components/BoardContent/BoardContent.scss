@@ -27,7 +27,7 @@
 
   .add-new-column {
     width: 250px;
-    // height: 32px;
+    height: 40;
     line-height: 32px;
     padding: 4px 0 4px 15px;
     cursor: pointer;
@@ -49,16 +49,16 @@
     background-color: hsla(0, 0, 100, 0.34);
     border-radius: $card-border-radius;
 
-    .group-bnt {
+    .group-btn {
       display: flex;
       padding-top: 10px;
       align-items: center;
-    }
 
-    i {
-      font-size: 30px;
-      padding-left: 10px;
-      cursor: pointer;
+      i {
+        font-size: 30px;
+        padding-left: 10px;
+        cursor: pointer;
+      }
     }
   }
 }

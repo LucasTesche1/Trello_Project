@@ -5,7 +5,7 @@ import { Container, Draggable } from "react-smooth-dnd";
 import Dropdown from "react-bootstrap/Dropdown";
 import ConfirmModal from "../Common/ConfirmModal";
 import Form from "react-bootstrap/Form";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, use } from "react";
 import {
   MODAL_ACTION_CLOSE,
   MODAL_ACTION_CONFIRM,
@@ -20,6 +20,10 @@ const Column = (props) => {
 
   const [isFirstClick, setIsFirstClick] = useState(true);
   const inputRef = useRef(null);
+
+  const [isShowAddNewCard, setIsShowAddNewCard] = useState(false);
+  const [valueTextArea, setValueTextArea] = useState("");
+  const textAreaRef = useRef(null);
 
   useEffect(() => {
     if (column && column.title) {
@@ -131,12 +135,32 @@ const Column = (props) => {
                 );
               })}
           </Container>
+
+          {isShowAddNewCard === true && (
+            <div className="add-new-card">
+              <textarea
+                rows="2"
+                className="form-control"
+                placeholder="Enter a title for this card..."
+                ref={textAreaRef}
+                value={valueTextArea}
+                onChange={(event) => setValueTextArea(event.target.value)}
+              ></textarea>
+
+              <div className="group-btn">
+                <button className="btn btn-primary">Add card</button>
+                <i className="fa fa-times icon"></i>
+              </div>
+            </div>
+          )}
         </div>
-        <footer>
-          <div className="footer-action">
-            <i className="fa fa-plus icon"> </i>Add another card
-          </div>
-        </footer>
+        {isShowAddNewCard === false && (
+          <footer>
+            <div className="footer-action">
+              <i className="fa fa-plus icon"> </i> Add another card
+            </div>
+          </footer>
+        )}
       </div>
       <ConfirmModal
         show={isShowModalDelete}
