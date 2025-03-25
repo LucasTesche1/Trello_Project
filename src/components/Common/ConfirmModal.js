@@ -24,13 +24,13 @@ const ConfirmModal = (props) => {
             variant="secondary"
             onClick={() => onAction("MODAL_ACTION_CLOSE")}
           >
-            Close
+            Fechar
           </Button>
           <Button
             variant="primary"
             onClick={() => onAction("MODAL_ACTION_CONFIRM")}
           >
-            Confirm
+            Confirmar
           </Button>
         </Modal.Footer>
       </Modal>

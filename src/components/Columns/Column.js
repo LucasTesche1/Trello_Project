@@ -134,11 +134,11 @@ const Column = (props) => {
               ></Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item href="#">Add card</Dropdown.Item>
+                <Dropdown.Item href="#">Adicionar card</Dropdown.Item>
                 <Dropdown.Item onClick={toggleModal}>
                   Delete column
                 </Dropdown.Item>
-                <Dropdown.Item href="#">Something else</Dropdown.Item>
+                <Dropdown.Item href="#">Outros</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </div>
@@ -184,7 +184,7 @@ const Column = (props) => {
                   className="btn btn-primary"
                   onClick={() => handleAddNewCard()}
                 >
-                  Add card
+                  Adicionar card
                 </button>
                 <i
                   className="fa fa-times icon"
@@ -201,7 +201,7 @@ const Column = (props) => {
               onClick={() => setIsShowAddNewCard(true)}
             >
               <i className="fa fa-plus icon"></i>
-              Add another card
+              Adicionar outro card
             </div>
           </footer>
         )}

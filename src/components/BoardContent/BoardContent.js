@@ -137,7 +137,7 @@ const BoardContent = () => {
             className="add-new-column"
             onClick={() => setIsShowAddList(true)}
           >
-            <i className="fa fa-plus icon"> Add another column</i>
+            <i className="fa fa-plus icon"> Adicionar outra coluna</i>
           </div>
         ) : (
           <div className="content-add-column">
@@ -155,7 +155,7 @@ const BoardContent = () => {
                 onClick={() => handleAddList()}
                 //colocar esse botão como verde
               >
-                Add list
+                Adicionar uma lista
               </button>
               <i
                 className="fa fa-times icon"

@@ -4,7 +4,7 @@ import "./BoardBar.scss";
 const BoardBar = () => {
   return (
     <>
-      <nav className="navbar-board"> Board bar</nav>
+      <nav className="navbar-board"> Quadro 1</nav>
     </>
   );
 };
