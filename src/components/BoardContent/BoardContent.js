@@ -153,6 +153,7 @@ const BoardContent = () => {
               <button
                 className="btn btn-sucess"
                 onClick={() => handleAddList()}
+                //colocar esse botão como verde
               >
                 Add list
               </button>
