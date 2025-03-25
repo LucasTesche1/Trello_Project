@@ -25,6 +25,7 @@
 
   .column-drag-handle {
     display: flex;
+    padding-right: 3px;
 
     .column-title {
       width: 90%;
@@ -34,9 +35,18 @@
       width: 10%;
 
       .dropdown-toggle {
+        padding: 0 7px;
+
         &::after {
           content: "...";
           border: none !important;
+          outline: none !important;
+          box-shadow: none !important;
+        }
+        &:hover {
+          background-color: #091e4214;
+        }
+        &:focus {
           outline: none !important;
           box-shadow: none !important;
         }
