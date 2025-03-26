@@ -7,6 +7,12 @@ import { mapOrder } from "../../utilities/sorts";
 import { Container, Draggable } from "react-smooth-dnd";
 import { applyDrag } from "../../utilities/dragDrop";
 import { v4 as uuidv4 } from "uuid";
+import {
+  createBoard,
+  listBoard,
+  editBoard,
+  deleteBoard,
+} from "../../services/apiService";
 
 const BoardContent = () => {
   const [board, setBoard] = useState({});
@@ -22,6 +28,7 @@ const BoardContent = () => {
     }
   }, [isShowAddList]);
 
+  //traz os dados das tabelas com o mockdata
   useEffect(() => {
     const boardInitData = initData.board.find((item) => item.id === "board-1");
     if (boardInitData) {
